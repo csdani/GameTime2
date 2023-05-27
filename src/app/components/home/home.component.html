@@ -1,0 +1,37 @@
+<form *ngIf="!isActive()">
+    <div class="mb-3 game-input-container">
+        <label for="gameInput" class="form-label">Game</label>
+        <input type="text" class="form-control" id="gameInput" aria-describedby="gameHelp">
+
+        <!-- <label for="gameInput" class="form-label">Game</label>
+        <select id="gameInput" class="selectpicker" data-live-search="true" aria-describedby="gameHelp">
+            <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
+            <option data-tokens="mustard">Burger, Shake and a Smile</option>
+            <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+        </select>
+        <div id="gameHelp" class="form-text">Enter what game you're about to start.</div> -->
+    </div>
+
+    
+
+    <div class="mb-3 platform-select-container">
+        <label for="platformSelect" class="form-label">Platform</label>
+        <select id="platformSelect" class="form-select">
+            <option value="pc">PC</option>
+            <option value="xbox">Xbox</option>
+            <option value="playstation">PlayStation</option>
+            <option value="nintendo">Nintendo</option>
+        </select>
+    </div>
+    <button *ngIf="!isActive()" type="button" class="btn btn-primary" (click)="start()">Start playing</button>
+</form>
+
+<button *ngIf="isActive()" class="btn btn-primary" (click)="stop()">Stop playing</button>
+
+<div class="playRecords-container">
+    <div class="list-group">
+        <a *ngFor="let playRecord of getPlayRecords()"
+            class="list-group-item list-group-item-action">{{playRecord.game}}, {{playRecord.platform}},
+            {{playRecord.start}}, {{playRecord.end}}</a>
+    </div>
+</div>
