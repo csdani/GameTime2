@@ -40,7 +40,9 @@ export class CustomHttpService {
     }
 
     public put(url: string, body: any): Observable<any> {
-        return this.http.put(url, body);
+        return this.http.put(url, body, {headers: {
+            'Content-Type': 'application/json'
+        }});
     }
 
     public delete(url: string): Observable<any> {
