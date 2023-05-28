@@ -1,15 +1,7 @@
-<form *ngIf="!isActive()">
+<form *ngIf="!isOngoing()">
     <div class="mb-3 game-input-container">
         <label for="gameInput" class="form-label">Game</label>
         <input type="text" class="form-control" id="gameInput" aria-describedby="gameHelp">
-
-        <!-- <label for="gameInput" class="form-label">Game</label>
-        <select id="gameInput" class="selectpicker" data-live-search="true" aria-describedby="gameHelp">
-            <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
-            <option data-tokens="mustard">Burger, Shake and a Smile</option>
-            <option data-tokens="frosting">Sugar, Spice and all things nice</option>
-        </select>
-        <div id="gameHelp" class="form-text">Enter what game you're about to start.</div> -->
     </div>
 
     
@@ -23,10 +15,10 @@
             <option value="nintendo">Nintendo</option>
         </select>
     </div>
-    <button *ngIf="!isActive()" type="button" class="btn btn-primary" (click)="start()">Start playing</button>
+    <button *ngIf="!isOngoing()" type="button" class="btn btn-primary" (click)="start()">Start playing</button>
 </form>
 
-<button *ngIf="isActive()" class="btn btn-primary" (click)="stop()">Stop playing</button>
+<button *ngIf="isOngoing()" class="btn btn-primary" (click)="stop()">Stop playing</button>
 
 <div class="playRecords-container">
     <div class="list-group">
