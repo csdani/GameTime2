@@ -22,9 +22,12 @@ export class HomeComponent implements OnInit {
     start() {
         var gameInputField = (<HTMLInputElement>document.getElementById("gameInput")).value;
         var platformSelectField = (<HTMLInputElement>document.getElementById("platformSelect")).value;
-        var playRecordModel = new PlayRecordModel(gameInputField, platformSelectField, new Date());
-        this.playRecords.push(playRecordModel);
-        console.log("Started playing: ", playRecordModel);
+        var playRecordToCreate = new PlayRecordModel(gameInputField, platformSelectField, new Date());
+        
+        this.playRecordService.createPlayRecord(playRecordToCreate)
+            .subscribe(() => {
+                this.fetchPlayRecords();
+            })
     }
 
     stop() {
@@ -36,7 +39,7 @@ export class HomeComponent implements OnInit {
 
             this.playRecordService.updatePlayRecordById(playRecordToUpdate)
                 .subscribe(() => {
-                    this.fetchPlayRecords;
+                    this.fetchPlayRecords();
                 });
         }
     }

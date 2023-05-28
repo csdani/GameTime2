@@ -7,6 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class CustomHttpService {
 
+    jsonContentTypeHeader = {
+        headers: { 'Content-Type': 'application/json' },
+    };
+
     constructor(private http: HttpClient) {
     }
 
@@ -36,13 +40,11 @@ export class CustomHttpService {
     }
 
     public post(url: string, body: any): Observable<any> {
-        return this.http.post(url, body);
+        return this.http.post(url, body, this.jsonContentTypeHeader);
     }
 
     public put(url: string, body: any): Observable<any> {
-        return this.http.put(url, body, {headers: {
-            'Content-Type': 'application/json'
-        }});
+        return this.http.put(url, body, this.jsonContentTypeHeader);
     }
 
     public delete(url: string): Observable<any> {

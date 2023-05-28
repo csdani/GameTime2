@@ -19,6 +19,11 @@ export class PlayRecordService {
     return this.httpService.get(this.urlHelper.PlayRecord);
   }
 
+  createPlayRecord(playRecord: PlayRecordModel) {
+    let jsonPlayRecord = JSON.stringify(playRecord);
+    return this.httpService.post(this.urlHelper.PlayRecord, jsonPlayRecord);
+  }
+
   updatePlayRecordById(playRecord: PlayRecordModel) {
     let id = playRecord.id;
     let jsonPlayRecord = JSON.stringify(playRecord);
