@@ -59,12 +59,21 @@ export class HomeComponent implements OnInit {
         this.playRecordService.getPlayRecords()
             .subscribe(playRecords =>  {
                 this.playRecords = playRecords;
-                //this.sortPlayRecordsByStart();
+                this.sortPlayRecordsByStart();
             });
     }
 
-    // private sortPlayRecordsByStart() {
-    //     this.playRecords = this.playRecords.sort((a: { start: { getTime: () => number; }; },b: { start: { getTime: () => number; }; })=>a.start.getTime()-b.start.getTime());
-    // }
+    private sortPlayRecordsByStart() {
+        const arr1 = this.playRecords.map(obj => {
+            return {...obj, date: new Date(obj.start)};
+          });
+          
+          const sortedPlayRecords = arr1.sort(
+            (objA, objB) => Number(objB.date) - Number(objA.date),
+          );
+
+        console.log(sortedPlayRecords)
+        this.playRecords = sortedPlayRecords;
+    }
 }
 
