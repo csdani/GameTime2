@@ -1,3 +1,39 @@
 * {
     margin: 5px;
 }
+
+nav {
+    margin: 0;
+    padding: 0;
+    background-color: #e3f2fd
+}
+
+#home-container {
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.playRecord-inputs-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+}
+
+.playRecord-button {
+    margin-left: 40px;
+}
+
+.playRecords-container {
+    margin-right: 15px;
+}
+
+.xbox-platform {
+    background-color: green;
+}

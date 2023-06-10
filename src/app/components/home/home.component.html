@@ -1,29 +1,59 @@
-<form *ngIf="!isOngoing()">
-    <div class="mb-3 game-input-container">
-        <label for="gameInput" class="form-label">Game</label>
-        <input type="text" class="form-control" id="gameInput" aria-describedby="gameHelp">
+<nav class="navbar sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">GameTime</a>
     </div>
+</nav>
 
+<div id="home-container">
+    <form *ngIf="!isOngoing()">
+        <div class="card playRecord-inputs-container">
+            <div class="mb-3 game-input-container">
+                <label for="gameInput" class="form-label">Game</label>
+                <input type="text" class="form-control" id="gameInput" aria-describedby="gameHelp">
+            </div>
+        
+            <div class="mb-3 platform-select-container">
+                <label for="platformSelect" class="form-label">Platform</label>
+                <select id="platformSelect" class="form-select">
+                    <option value="pc">PC</option>
+                    <option value="xbox">Xbox</option>
+                    <option value="playstation">PlayStation</option>
+                    <option value="nintendo">Nintendo</option>
+                </select>
+            </div>
+            <div class="button-container">
+                <button *ngIf="!isOngoing()" type="button" class="btn btn-primary playRecord-button" (click)="start()">Start playing</button>
+            </div>
+        </div>
+    </form>
     
-
-    <div class="mb-3 platform-select-container">
-        <label for="platformSelect" class="form-label">Platform</label>
-        <select id="platformSelect" class="form-select">
-            <option value="pc">PC</option>
-            <option value="xbox">Xbox</option>
-            <option value="playstation">PlayStation</option>
-            <option value="nintendo">Nintendo</option>
-        </select>
+    <div class="button-container">
+        <button *ngIf="isOngoing()" class="btn btn-primary playRecord-button" (click)="stop()">Stop playing</button>
     </div>
-    <button *ngIf="!isOngoing()" type="button" class="btn btn-primary" (click)="start()">Start playing</button>
-</form>
-
-<button *ngIf="isOngoing()" class="btn btn-primary" (click)="stop()">Stop playing</button>
-
-<div class="playRecords-container">
-    <div class="list-group">
-        <a *ngFor="let playRecord of getPlayRecords()"
-            class="list-group-item list-group-item-action">{{playRecord.game}}, {{playRecord.platform}},
-            {{playRecord.start}}, {{playRecord.end}}</a>
+    
+    <div class="playRecords-container" *ngIf="getPlayRecords().length > 0">
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Start</th>
+                <th scope="col">End</th>
+                <th scope="col">Game</th>
+                <th scope="col">Platform</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let playRecord of getPlayRecords()">
+                <td>{{playRecord.start}}</td>
+                <td>{{playRecord.end}}</td>
+                <td>{{playRecord.game}}</td>
+                <td [class.xbox-platform] = "playRecord.platform === 'Xbox'" 
+                    [class.playstation-platform] = "playRecord.platform === 'PlayStation'" 
+                    [class.pc-platform] = "playRecord.platform === 'PC'" 
+                    [class.other-platform] = "playRecord.platform === 'other'">
+                    {{playRecord.platform}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
     </div>
 </div>

@@ -58,6 +58,9 @@ export class HomeComponent implements OnInit {
     private fetchPlayRecords() {
         this.playRecordService.getPlayRecords()
             .subscribe(playRecords =>  {
+                playRecords.forEach((playRecord: { platform: string; }) => {
+                    playRecord.platform = this.formatPlatformString(playRecord.platform);
+                });
                 this.playRecords = playRecords;
                 this.sortPlayRecordsByStart();
             });
@@ -74,6 +77,18 @@ export class HomeComponent implements OnInit {
 
         console.log(sortedPlayRecords)
         this.playRecords = sortedPlayRecords;
+    }
+
+    private formatPlatformString(platform: string) {
+        if (platform == "xbox") {
+            return "Xbox";
+        } else if (platform == "playstation") {
+            return "PlayStation";
+        } else if (platform == "pc") {
+            return "PC";
+        } else {
+            return "Other";
+        }
     }
 }
 
