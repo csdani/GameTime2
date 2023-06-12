@@ -1,36 +1,46 @@
 <nav class="navbar sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">GameTime</a>
+        <a class="navbar-brand" href="#">GameTime</a>
+        <div class="navbar-items-container ms-auto me-auto">
+
+            <form *ngIf="!isOngoing()">
+                <div class="input-group mb-3 game-input-container">
+                    <span class="input-group-text" id="gameHelp">Game</span>
+                    <input type="text" id="gameInput" class="form-control" aria-label="Sizing example input" aria-describedby="gameHelp">
+                </div>
+
+                <div class="input-group mb-3 platform-select-container">
+                    <label class="input-group-text" for="platformSelect">Platform</label>
+                    <select class="form-select" id="platformSelect">
+                        <option value="PC">PC</option>
+                        <option value="Xbox">Xbox</option>
+                        <option value="PlayStation">PlayStation</option>
+                        <option value="Nintendo">Nintendo</option>
+                    </select>
+                </div>
+
+                <div class="button-container">
+                    <button *ngIf="!isOngoing()" type="button" class="btn btn-primary playRecord-button" (click)="start()">
+                        <i class="bi bi-play-fill"></i>
+                    </button>
+                </div>
+            </form>
+
+            <div *ngIf="isOngoing()"  class="stop-container">
+                <div class="input-group mb-3 game-input-container">
+                    <span class="input-group-text" id="gameHelp">Now playing</span>
+                    <input type="text" id="gameInput" class="form-control" aria-label="Sizing example input" aria-describedby="gameHelp" value={{getOngoingPlayRecordGame()}} disabled>
+                    <button class="btn btn-primary playRecord-button" (click)="stop()">
+                        <i class="bi bi-stop-fill"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
     </div>
 </nav>
 
-<div id="home-container">
-    <form *ngIf="!isOngoing()">
-        <div class="card playRecord-inputs-container">
-            <div class="mb-3 game-input-container">
-                <label for="gameInput" class="form-label">Game</label>
-                <input type="text" class="form-control" id="gameInput" aria-describedby="gameHelp">
-            </div>
-        
-            <div class="mb-3 platform-select-container">
-                <label for="platformSelect" class="form-label">Platform</label>
-                <select id="platformSelect" class="form-select">
-                    <option value="pc">PC</option>
-                    <option value="xbox">Xbox</option>
-                    <option value="playstation">PlayStation</option>
-                    <option value="nintendo">Nintendo</option>
-                </select>
-            </div>
-            <div class="button-container">
-                <button *ngIf="!isOngoing()" type="button" class="btn btn-primary playRecord-button" (click)="start()">Start playing</button>
-            </div>
-        </div>
-    </form>
-    
-    <div class="button-container">
-        <button *ngIf="isOngoing()" class="btn btn-primary playRecord-button" (click)="stop()">Stop playing</button>
-    </div>
-    
+<div id="home-container">    
     <div class="playRecords-container" *ngIf="getPlayRecords().length > 0">
         <table class="table table-bordered">
             <thead>
@@ -43,14 +53,23 @@
             </thead>
             <tbody>
               <tr *ngFor="let playRecord of getPlayRecords()">
-                <td>{{playRecord.start}}</td>
-                <td>{{playRecord.end}}</td>
+                <td>{{playRecord.start | date:'yyyy.MM.dd HH:mm:ss' }}</td>
+                <td>{{playRecord.end | date:'yyyy.MM.dd HH:mm:ss' }}</td>
                 <td>{{playRecord.game}}</td>
-                <td [class.xbox-platform] = "playRecord.platform === 'Xbox'" 
-                    [class.playstation-platform] = "playRecord.platform === 'PlayStation'" 
-                    [class.pc-platform] = "playRecord.platform === 'PC'" 
-                    [class.other-platform] = "playRecord.platform === 'other'">
-                    {{playRecord.platform}}
+                <td *ngIf="playRecord.platform === 'Xbox'" class="table-platform xbox-platform">
+                    <span aria-placeholder="Xbox"><i class="bi bi-xbox"></i></span>
+                </td>
+                <td *ngIf="playRecord.platform === 'PlayStation'" class="table-platform playstation-platform">
+                    <span><i class="bi bi-playstation"></i></span>
+                </td>
+                <td *ngIf="playRecord.platform === 'PC'" class="table-platform pc-platform">
+                    <span><i class="bi bi-pc-display"></i></span>
+                </td>
+                <td *ngIf="playRecord.platform === 'Nintendo'" class="table-platform nintendo-platform">
+                    <span><i class="bi bi-nintendo-switch"></i></span>
+                </td>
+                <td *ngIf="playRecord.platform === 'Other'" class="table-platform other-platform">
+                    <span><i class="bi bi-three-dots"></i></span>
                 </td>
               </tr>
             </tbody>

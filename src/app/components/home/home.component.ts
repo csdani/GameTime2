@@ -55,6 +55,13 @@ export class HomeComponent implements OnInit {
         return this.playRecords;
     }
 
+    getOngoingPlayRecordGame() {
+        if (this.isOngoing()) {
+            return this.playRecords.length != 0 && this.playRecords.find(x => x.end === null || x.end === undefined)?.game;
+        }
+        return ""
+    }
+
     private fetchPlayRecords() {
         this.playRecordService.getPlayRecords()
             .subscribe(playRecords =>  {
@@ -86,9 +93,13 @@ export class HomeComponent implements OnInit {
             return "PlayStation";
         } else if (platform == "pc") {
             return "PC";
-        } else {
+        } else if (platform == "nintendo") {
+            return "Nintendo";
+        } else if (platform == "other") {
             return "Other";
         }
+
+        return platform;
     }
 }
 

@@ -1,19 +1,31 @@
-* {
-    margin: 5px;
-}
-
+/*
+NAV ELEMENTS
+*/
 nav {
+    margin-top: 15px;
     margin: 0;
     padding: 0;
-    background-color: #e3f2fd
+    background-color: #e3f2fd;
+    justify-content: center;
 }
 
-#home-container {
-    margin-top: 0;
+.navbar-nav .nav-link,
+.navbar-brand {
+  text-align: center;
+}
+
+.navbar-items-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    margin-top: 15px;
+}
+
+form {
+    margin: 5px 5px 5px -130px;
+    display: flex;
+}
+
+form > .input-group {
+    margin-left: 10px;
 }
 
 .playRecord-inputs-container {
@@ -21,19 +33,62 @@ nav {
     flex-direction: row;
 }
 
-.button-container {
+.playRecord-button {
+    width: max-content;
+    margin-left: 20px;
+}
+
+.stop-container {
+    margin: 5px 5px 5px -130px;
     display: flex;
+    flex-direction: row;
     align-items: center;
 }
 
-.playRecord-button {
-    margin-left: 40px;
+.stop-container input {
+    width: max-content;
+}
+
+/*
+TABLE ELEMENTS
+*/
+#home-container {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .playRecords-container {
     margin-right: 15px;
 }
 
-.xbox-platform {
-    background-color: green;
+.table-platform span {
+    color: white;
+    border-radius: 20px;
+    width: auto;
+    height: auto;
+    padding: 5px 10px 5px 10px;
+    font-size: 18px;
+}
+
+.xbox-platform span {
+    background-color: 	#107C10;
+}
+
+.playstation-platform span {
+    background-color: 	#006FCD;
+}
+
+.pc-platform span {
+    background-color: 	#212121;
+}
+
+.nintendo-platform span {
+    background-color: 	#e4000f;
+}
+
+.other-platform span {
+    background-color: 	#767676;
 }
