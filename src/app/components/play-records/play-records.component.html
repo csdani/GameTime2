@@ -1,0 +1,32 @@
+<table class="table table-dark table-hover rounded rounded-3 overflow-hidden ">
+    <thead>
+        <tr class="text-white-50">
+        <th scope="col">Start</th>
+        <th scope="col">End</th>
+        <th scope="col">Game</th>
+        <th scope="col">Platform</th>
+        </tr>
+    </thead>
+    <tbody class="text-white">
+        <tr *ngFor="let playRecord of getPlayRecords()">
+        <td>{{playRecord.start | date:'yyyy.MM.dd HH:mm:ss' }}</td>
+        <td>{{playRecord.end | date:'yyyy.MM.dd HH:mm:ss' }}</td>
+        <td>{{playRecord.game}}</td>
+        <td *ngIf="playRecord.platform === 'Xbox'" class="table-platform xbox-platform">
+            <span aria-placeholder="Xbox"><i class="bi bi-xbox"></i></span>
+        </td>
+        <td *ngIf="playRecord.platform === 'PlayStation'" class="table-platform playstation-platform">
+            <span><i class="bi bi-playstation"></i></span>
+        </td>
+        <td *ngIf="playRecord.platform === 'PC'" class="table-platform pc-platform">
+            <span><i class="bi bi-pc-display"></i></span>
+        </td>
+        <td *ngIf="playRecord.platform === 'Nintendo'" class="table-platform nintendo-platform">
+            <span><i class="bi bi-nintendo-switch"></i></span>
+        </td>
+        <td *ngIf="playRecord.platform === 'Other'" class="table-platform other-platform">
+            <span><i class="bi bi-three-dots"></i></span>
+        </td>
+        </tr>
+    </tbody>
+</table>

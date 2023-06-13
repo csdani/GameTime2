@@ -1,0 +1,43 @@
+<nav class="navbar sticky-top bg-dark" data-bs-theme="dark" [class.wave] = "isOngoing()">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <i class="bi bi-dpad custom-red"></i>
+            &nbsp;<span class="custom-red">Game</span>Time
+        </a>
+
+        <div class="navbar-items-container ms-auto me-auto">
+            <form *ngIf="!isOngoing()">
+                <div class="input-group mb-3 game-input-container">
+                    <span class="input-group-text" id="gameHelp">Game</span>
+                    <input type="text" id="gameInput" class="form-control" aria-label="Sizing example input" aria-describedby="gameHelp">
+                </div>
+
+                <div class="input-group mb-3 platform-select-container">
+                    <label class="input-group-text" for="platformSelect">Platform</label>
+                    <select class="form-select" id="platformSelect">
+                        <option value="PC">PC</option>
+                        <option value="Xbox">Xbox</option>
+                        <option value="PlayStation">PlayStation</option>
+                        <option value="Nintendo">Nintendo</option>
+                    </select>
+                </div>
+
+                <div class="button-container">
+                    <button *ngIf="!isOngoing()" type="button" class="btn btn-dark border playRecord-button custom-red-hover" (click)="start()">
+                        <i class="bi bi-play-fill"></i>
+                    </button>
+                </div>
+            </form>
+
+            <div *ngIf="isOngoing()" class="stop-container">
+                <div class="input-group mb-3 game-input-container">
+                    <span class="input-group-text" id="gameHelp">Now playing</span>
+                    <input type="text" id="gameInput" class="form-control" aria-label="Sizing example input" aria-describedby="gameHelp" value={{getOngoingPlayRecord()?.game}} disabled>
+                    <button class="btn btn-dark border playRecord-button custom-red-hover" (click)="stop()">
+                        <i class="bi bi-stop-fill"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

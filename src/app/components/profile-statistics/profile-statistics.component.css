@@ -1,0 +1,13 @@
+.card {
+    margin: 20px auto 20px auto;
+    max-width: 55rem;
+    border: 0;
+}
+
+#favorite-platform {
+    margin-left: auto;
+}
+
+.card-body {
+    display: flex;
+}

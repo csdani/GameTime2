@@ -29,4 +29,8 @@ export class PlayRecordService {
     let jsonPlayRecord = JSON.stringify(playRecord);
     return this.httpService.put(this.urlHelper.PlayRecord + id, jsonPlayRecord);
   }
+
+  getOngoingPlayRecord() {
+    return this.httpService.get(this.urlHelper.PlayRecord + "/ongoing");
+  }
 }

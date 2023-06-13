@@ -1,0 +1,99 @@
+
+nav {
+    margin-top: 15px;
+    margin: 0;
+    padding: 0;
+    background-color: #e3f2fd;
+    justify-content: center;
+}
+
+.navbar-nav .nav-link,
+.navbar-brand {
+  text-align: center;
+}
+
+.navbar-items-container {
+    display: flex;
+    margin-top: 15px;
+}
+
+form {
+    display: flex;
+    margin: 5px 5px 5px -130px;
+}
+
+form > .input-group {
+    margin-left: 10px;
+}
+
+.playRecord-inputs-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.playRecord-button {
+    width: max-content;
+    margin-left: 20px;
+}
+
+.stop-container {
+    margin: 5px 5px 5px -130px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.stop-container input {
+    width: max-content;
+}
+
+/*
+WAVE ANIMATION
+*/
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400);
+
+.wave {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: Roboto;
+  overflow: hidden;
+  
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    min-width: 600vw;
+    min-height: 600vw;
+    background-color: #F60030;
+    animation-name: rotate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  
+  &:before {
+    bottom: 23vh;
+    border-radius: 45%;
+    animation-duration: 10s;
+  }
+  
+  &:after {
+    bottom: 12vh;
+    opacity: .5;
+    border-radius: 47%;
+    animation-duration: 10s;
+  }
+}
+
+@keyframes rotate {
+  0% {transform: translate(-50%, 0) rotateZ(0deg);}
+  50% {transform: translate(-60%, -2%) rotateZ(200deg);}
+  100% {transform: translate(-50%, 0%) rotateZ(360deg);}
+}
+
+span, input, button {
+    z-index: 10;
+}

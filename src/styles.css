@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #121212;
+}
+
+.custom-red {
+    color: #F60030;
+}
+
+.custom-bg-red {
+    background-color: #F60030;
+}
+
+.custom-red-hover:hover {
+    color: #F60030;
+}
+
+.custom-bg-red-hover:hover {
+    background-color: #F60030;
+}
+
+.custom-grey {
+    color: #272a2e;
+}
+
+.custom-bg-grey {
+    background-color: #272a2e;
+}
