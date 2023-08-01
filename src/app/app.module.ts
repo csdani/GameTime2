@@ -8,21 +8,25 @@ import { HomeComponent } from './components/home/home.component';
 import { ProfileStatisticsComponent } from './components/profile-statistics/profile-statistics.component';
 import { PlayRecordsComponent } from './components/play-records/play-records.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { NavbarLoginComponent } from './components/navbar/navbar-login/navbar-login.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    ProfileStatisticsComponent,
-    PlayRecordsComponent,
-    NavbarComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        ProfileStatisticsComponent,
+        PlayRecordsComponent,
+        NavbarComponent,
+        NavbarLoginComponent,
+        LoginComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,5 @@
+<div class="navbar-login-container">
+    <button *ngIf="!getIsLoggedIn()" type="button" class="btn btn-light login"
+        (click)="redirectToLogin()">Login</button>
+    <button *ngIf=" getIsLoggedIn()" type="button" class="btn btn-light logout" (click)="logout()">Logout</button>
+</div>
